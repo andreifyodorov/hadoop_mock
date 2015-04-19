@@ -44,9 +44,9 @@ def mock(args):
     parser.add_argument('path', nargs="+")
     args = parser.parse_args(args)
 
-    hadoop_cli = os.environ.get('HADOOP_MOCK_CLI_PATH')
+    hadoop_cli = os.environ.get('HADOOP_MOCK_CLI')
     if not hadoop_cli:
-        parser.error("please define HADOOP_MOCK_CLI_PATH env variable")
+        parser.error("please define HADOOP_MOCK_CLI env variable")
 
     files = subprocess.check_output([hadoop_cli, 'fs', '-ls', '-R'] + args.path)
     calls = []
@@ -121,7 +121,7 @@ def ls(args):
         if os.path.isdir(file) and not args.dirs_only:
             dirlist = glob.glob(os.path.join(file, '*'))
             if dirlist:
-                print "Found %d items\n" % len(dirlist)
+                print "Found %d items" % len(dirlist)
                 for file in dirlist:
                     print_file_info(file)
         else:
