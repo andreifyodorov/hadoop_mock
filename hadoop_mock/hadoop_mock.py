@@ -379,7 +379,7 @@ def streaming(args):
         return 1
 
 
-if __name__ == '__main__':
+def cli():
     parser = argparse.ArgumentParser(prog="hadoop_mock", add_help=False)
     parser.add_argument('mode', choices=['mock', 'fs', 'jar'])
     args, leftovers = parser.parse_known_args()

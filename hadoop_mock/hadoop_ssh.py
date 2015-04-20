@@ -32,7 +32,7 @@ def main(host, opts, sudo, args):
             output = subprocess.check_output(ssh_cmd + ["rm", "-rf", tmp_path])
 
 
-if __name__ == '__main__':
+def cli():
     host = os.environ.get('HADOOP_SSH_HOST')
     if not host:
         sys.stderr.write("%s: Define HADOOP_SSH_HOST\n" % sys.argv[0])
